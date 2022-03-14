@@ -67,13 +67,12 @@ function Main() {
                                                 return (
                                                     <li key={index}>
                                                         {
-                                                            item === selectedTokenLeft ? (
-                                                                <div className='token-item active' onClick={handleTokenClickLeft}>
+                                                            item === selectedTokenLeft || item === selectedTokenRight ? (
+                                                                <div className='token-item active' >
                                                                     {item}
                                                                 </div>
                                                             ) : (
                                                                 <div className='token-item' onClick={handleTokenClickLeft}>
-                                                                    <i class="fa-solid fa-coin"></i>
                                                                     {item}
                                                                 </div>
                                                             )
@@ -96,7 +95,7 @@ function Main() {
                         }
                     </div>
                     <div className='amount'>
-                        <input type="number" placeholder="Amount" required />
+                        <input type="number" min="0" placeholder="Amount" required />
                     </div>
                 </div>
                 <div className="main-center">
@@ -119,8 +118,8 @@ function Main() {
                                                 return (
                                                     <li key={index}>
                                                         {
-                                                            item === selectedTokenRight ? (
-                                                                <div className='token-item active' onClick={handleTokenClickRight}>
+                                                            item === selectedTokenLeft || item === selectedTokenRight ? (
+                                                                <div className='token-item active' >
                                                                     {item}
                                                                 </div>
                                                             ) : (
