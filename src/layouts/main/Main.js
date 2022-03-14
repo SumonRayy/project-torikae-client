@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import CircleButton from '../../components/buttons/button.circle';
 
 import './Main.css'
 
@@ -99,9 +100,7 @@ function Main() {
                     </div>
                 </div>
                 <div className="main-center">
-                    <button className="main-btn">
-                        Exchange
-                    </button>
+                    <CircleButton content={"Exchange"} />
                 </div>
                 <div className="main-right">
                     <div className='token'>
