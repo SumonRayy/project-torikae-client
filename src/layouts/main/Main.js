@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import CircleButton from '../../components/buttons/button.circle';
+import InputBox from '../../components/inputs/input.box';
 
 import './Main.css'
 
@@ -28,6 +29,11 @@ function Main() {
     const [isRightDropOpen, setIsRightDropOpen] = useState(false);
     const [selectedTokenLeft, setSelectedTokenLeft] = useState('Select a Token');
     const [selectedTokenRight, setSelectedTokenRight] = useState('Select a Token');
+
+    const [inputValueLeft, setInputValueLeft] = useState();
+    const [inputValueRight, setInputValueRight] = useState();
+
+    const [exchangeRate, setExchangeRate] = useState(1);
 
     const toggleLeftDrop = () => {
         setIsLeftDropOpen(!isLeftDropOpen);
@@ -95,9 +101,16 @@ function Main() {
 
                         }
                     </div>
-                    <div className='amount'>
-                        <input type="number" min="0" placeholder="Amount" required />
-                    </div>
+                    <InputBox
+                        type='number'
+                        placeholder='Enter Amount'
+                        readOnly={false}
+                        value={inputValueLeft}
+                        onChange={(e) => {
+                            setInputValueLeft(e.target.value)
+                            selectedTokenRight === 'Select a Token' ? setInputValueRight(e.target.value) : setInputValueRight(e.target.value * exchangeRate)
+                        }}
+                    />
                 </div>
                 <div className="main-center">
                     <CircleButton content={"Exchange"} />
@@ -144,9 +157,15 @@ function Main() {
 
                         }
                     </div>
-                    <div className='amount'>
-                        <input type="number" placeholder="Amount" readOnly />
-                    </div>
+                    <InputBox
+                        type='number'
+                        placeholder='Recieve Amount'
+                        readOnly={true}
+                        value={inputValueRight}
+                        onChange={() => {
+                            setInputValueRight('')
+                        }}
+                    />
                 </div>
             </div>
         </main>
