@@ -25,8 +25,8 @@ function Main() {
 
     const [isLeftDropOpen, setIsLeftDropOpen] = useState(false);
     const [isRightDropOpen, setIsRightDropOpen] = useState(false);
-    const [selectedTokenLeft, setSelectedTokenLeft] = useState('BTC');
-    const [selectedTokenRight, setSelectedTokenRight] = useState('ETH');
+    const [selectedTokenLeft, setSelectedTokenLeft] = useState('Select a Token');
+    const [selectedTokenRight, setSelectedTokenRight] = useState('Select a Token');
 
     const toggleLeftDrop = () => {
         setIsLeftDropOpen(!isLeftDropOpen);
@@ -73,6 +73,7 @@ function Main() {
                                                                 </div>
                                                             ) : (
                                                                 <div className='token-item' onClick={handleTokenClickLeft}>
+                                                                    <i class="fa-solid fa-coin"></i>
                                                                     {item}
                                                                 </div>
                                                             )
@@ -112,7 +113,7 @@ function Main() {
                                         {selectedTokenRight}
                                         <i className="fa-solid fa-angle-up"></i>
                                     </button>
-                                    <ul>
+                                    <ul id='flow-right'>
                                         {
                                             tokenList.map((item, index) => {
                                                 return (
